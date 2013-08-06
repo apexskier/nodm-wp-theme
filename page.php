@@ -34,7 +34,9 @@ get_header(); ?>
     	<div id="primary" class="col-sm-9 col-lg-10">
     		<div id="content" role="main">
             	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> aria-labeledby="#title-h2">
-        			<?php the_content(); ?>
+        			<?php while ( have_posts() ) : the_post(); ?>
+        			    <?php the_content(); ?>
+    			    <?php endwhile; ?>
             	</article><!-- #post -->
     		</div><!-- #content -->
     	</div><!-- #primary -->

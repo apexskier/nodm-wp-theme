@@ -67,23 +67,25 @@ add_action( 'after_setup_theme', 'nodm2013_setup' );
 function nodm2013_scripts_styles() {
     global $wp_styles;
 
-    /*
-     * Adds JavaScript to pages with the comment form to support
-     * sites with threaded comments (when in use).
-     */
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
-        wp_enqueue_script( 'comment-reply' );
-
-    wp_enqueue_script( 'nodm2013-jquery', 'http://code.jquery.com/jquery-1.9.1.min.js', array(), '1.0', true );
-    wp_enqueue_script( 'nodm2013-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.0', true );
-    wp_enqueue_script( 'nodm2013-script', get_template_directory_uri() . '/js/script.js', array(), '1.0', true );
-
-    /*
-     * Loads our main stylesheet.
-     */
+    /* load styles */
     wp_enqueue_style( 'nodm2013-style', get_stylesheet_uri() );
-    
-    wp_enqueue_style( 'nodm2013-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
+    wp_enqueue_style( 'nodm2013-bootstrap',
+                      get_template_directory_uri() . '/css/bootstrap.min.css',
+                      false, '2.9.1', 'all' );
+    wp_enqueue_style( 'nodm2013-bootstrap-glyphicons',
+                      get_template_directory_uri() . '/css/bootstrap-glyphicons.css',
+                      array('nodm2013-bootstrap'), '1.0.0', 'all' );
+
+    /* load scripts */
+    wp_enqueue_script( 'nodm2013-jquery',
+                       'http://code.jquery.com/jquery-1.9.1.min.js',
+                       array(), '1.9.1', true );
+    wp_enqueue_script( 'nodm2013-bootstrap',
+                       get_template_directory_uri() . '/js/bootstrap.min.js',
+                       array(), '2.9.1', true );
+    wp_enqueue_script( 'nodm2013-script',
+                       get_template_directory_uri() . '/js/script.js',
+                       array(), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'nodm2013_scripts_styles' );
 
@@ -140,7 +142,7 @@ function nodm2013_widgets_init() {
     register_sidebar( array(
         'name' => __( 'Main Sidebar', 'nodm2013' ),
         'id' => 'sidebar-1',
-        'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'nodm2013' ),
+        'description' => __( 'Appears on posts and pages except the home page.', 'nodm2013' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s hidden-phone">',
         'after_widget' => '</aside>',
         'before_title' => '<h3 class="widget-title">',
@@ -150,6 +152,7 @@ function nodm2013_widgets_init() {
 add_action( 'widgets_init', 'nodm2013_widgets_init' );
 
 if ( ! function_exists( 'nodm2013_content_nav' ) ) :
+
 /**
  * Displays navigation to next/previous pages when applicable.
  *
