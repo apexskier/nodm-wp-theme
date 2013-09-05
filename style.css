@@ -9,6 +9,8 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
+@import url(./css/bootstrap.css);
+
 /* =Repeatable patterns
 -------------------------------------------------------------- */
 
@@ -44,9 +46,6 @@ object,
 video {
 	max-width: 100%;
 }
-.entry-content .twitter-tweet-rendered {
-	max-width: 100% !important; /* Override the Twitter embed fixed width */
-}
 
 /* Images */
 .alignleft {
@@ -68,50 +67,6 @@ img.header-image,
 img.wp-post-image {
 	/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-.wp-caption {
-	max-width: 100%; /* Keep wide captions from overflowing their container. */
-	padding: 4px;
-}
-.wp-caption .wp-caption-text,
-.gallery-caption,
-.entry-caption {
-	font-style: italic;
-	font-size: 0.9em;
-}
-img.wp-smiley,
-.rsswidget img {
-	border: 0;
-	border-radius: 0;
-	box-shadow: none;
-	margin-bottom: 0;
-	margin-top: 0;
-	padding: 0;
-}
-.entry-content dl.gallery-item {
-	margin: 0;
-}
-.gallery-item a,
-.gallery-caption {
-	width: 90%;
-}
-.gallery-item a {
-	display: block;
-}
-.gallery-caption a {
-	display: inline;
-}
-.gallery-columns-1 .gallery-item a {
-	max-width: 100%;
-	width: auto;
-}
-.gallery .gallery-icon img {
-	height: auto;
-	max-width: 90%;
-	padding: 5%;
-}
-.gallery-columns-1 .gallery-icon img {
-	padding: 3%;
 }
 
 /* Navigation */
@@ -264,29 +219,8 @@ img.wp-smiley,
 -------------------------------------------------------------- */
 
 /* Body, links, basics */
-html {
-}
-body {
-    background: #eee;
-}
-@media (max-width: 767px) {
-    body {
-        padding: 0;
-    }
-    .container {
-        margin-right: 1em;
-        margin-left: 1em;
-    }
-}
-
 blockquote p {
     margin-bottom:0.5em;
-}
-.contents {
-    background: #fff;
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-       -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Assistive text */
@@ -351,6 +285,9 @@ blockquote p {
     background-repeat: no-repeat;
     background-size: 100%;
 }
+.min-width {
+    padding: 2em 0;
+}
 .logo-action {
     padding: 2em 0;
 }
@@ -374,7 +311,7 @@ blockquote p {
 }
 @media (max-width: 767px) {
     .logo-action {
-        padding: 1em 0;
+        padding: 0 0 1em;
     }
     .action-links.span6 {
         display: table;
@@ -410,30 +347,21 @@ blockquote p {
 h1 a {
     color: #222;
 }
-.header-bg {
-    background: #fff;
-}
 
 /* Slideshow */
-/*.carousel {
-    margin-bottom: 0;
-    background: #eee;
-    border-top: 1px solid rgba(0, 0, 0, 0.4);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+#slideshow {
+//    border-top: 1px solid rgba(0, 0, 0, 0.4);
+//    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-.carousel-inner {
-    max-height: 400px;
+#slideshow .carousel-inner {
     -moz-transition: height 200ms;
     -webkit-transition: height 200ms;
     -o-transition: height 200ms;
     transition: height 200ms;
 }
-.carousel-inner .item img {
-    width: 100%;
-}*/
 
 #title {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
