@@ -33,7 +33,7 @@
         <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'nodm2013' ); ?>"><?php _e( 'Skip to content', 'nodm2013' ); ?></a>
 
         <div class="logo-action row">
-            <h1 class="site-title col-sm-6"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><span class="visible-lg">North Olympic <br />Discovery Marathon</span><span class="hidden-lg">NODM</span></a></h1>
+            <h1 class="site-title col-sm-6 visuallyhidden"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><span class="visible-lg">North Olympic <br />Discovery Marathon</span><span class="hidden-lg">NODM</span></a></h1>
 
             <div class="action-links col-sm-6">
                 <div class="pull-right">

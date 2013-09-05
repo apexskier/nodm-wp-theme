@@ -346,7 +346,7 @@ blockquote p {
 
 /* Header */
 .container.header {
-    background-image: url('./img/mountains.png');
+    background-image: url('./img/header.png');
     background-position: center 10px;
     background-repeat: no-repeat;
     background-size: 100%;
