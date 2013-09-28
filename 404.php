@@ -9,7 +9,7 @@
 
 get_header(); ?>
     
-<div class="navbar" id="title">
+<div class="navbar navbar-default" id="title">
     <div class="container">
         <h2 class="navbar-brand col-sm-7 col-lg-8" id="title-h2"><?php _e( 'Whoops!', 'nodm2013' ); ?></h2>
         <?php get_search_form(); ?>

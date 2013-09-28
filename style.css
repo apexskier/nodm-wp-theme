@@ -69,6 +69,15 @@ img.wp-post-image {
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
+.home-link {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	display: block;
+	top: 0;
+	visibility: hiddev;
+}
+	
 /* Navigation */
 #main-nav {
     text-align: center;
@@ -155,7 +164,7 @@ img.wp-post-image {
     right: 200px;
     left: auto;
 }
-@media (max-width: 979px) and (min-width: 768px) {
+@media (max-width: 980px) and (min-width: 768px) {
     .site-title.span6 {
         width: 22.92817679558011%;
     }
@@ -253,37 +262,42 @@ blockquote p {
     height: 5px;
     float: left;
 }
-.color.red{
+.color.one {
     width: 40%;
 }
-.color.blue {
+.color.two {
     width: 30%;
 }
-.color.green {
+.color.three {
     width: 20%;
 }
-.color.orange {
+.color.four {
     width: 10%;
 }
 .red {
-    background-color: rgb(211, 87, 75);
+    background-color: #e82c36;
 }
 .blue {
-    background-color: rgb(47, 118, 115);
+    background-color: #00b1b9;
 }
 .green {
-    background-color: #D3D05E;
+    background-color: #94c74e;
 }
 .orange {
-    background-color: #E8A54E;
+    background-color: #ec6532;
 }
 
 /* Header */
+.header-bg {
+    background-color: #238CB8;
+}
 .container.header {
-    background-image: url('./img/mountains.png');
+    background-image: url('./img/header.png');
     background-position: center 10px;
     background-repeat: no-repeat;
     background-size: 100%;
+    height: 219px;
+    padding-top: 64px;
 }
 .min-width {
     padding: 2em 0;
@@ -367,9 +381,9 @@ h1 a {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #ccc;
     border-radius: 0;
-    margin-top: 0.7em;
     border-top: 1px solid #ddd;
     margin-bottom: 0.3em;
+    z-index: 10;
 }
 #title .navbar-brand {
     margin-bottom: 0;
@@ -464,7 +478,7 @@ h1 a {
 #menu-events .menu-item a {
     height: 120px;
     color: #fff;
-    font-weight: 100;
+    font-weight: 300;
     font-size: 32px;
     text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
     display: block;
@@ -490,7 +504,7 @@ h1 a {
 /* 350px x 180px */
 #menu-events #menu-item-456 a {
     /* marathon */
-    background-color: rgb(211, 87, 75);
+    background-color: #e82c36;
 }
 #menu-events #menu-item-456 a:after {
     content: " full";
@@ -500,23 +514,23 @@ h1 a {
 }
 #menu-events #menu-item-454 a {
     /* half marathon */
-    background-color: rgb(47, 118, 115);
+    background-color: #00b1b9;
 }
 #menu-events #menu-item-455 a {
     /* kids marathon */
-    background-color: #D3D05E;
+    background-color: #94c74e;
 }
 #menu-events #menu-item-458 a {
     /* 5k/10k */
-    background-color: #E8A54E;
+    background-color: #ec6532;
 }
 #menu-events #menu-item-457 a {
     /* Marathon Walk */
-    background-color: rgb(211, 87, 75);
+    background-color: #e82c36;
 }
 #menu-events #menu-item-170 a {
     /* marathon relay */
-    background-color: rgb(47, 118, 115);
+    background-color: #00b1b9;
 }
 /*
 #menu-events li#menu-item-456 a {

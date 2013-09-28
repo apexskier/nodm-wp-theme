@@ -71,9 +71,6 @@ function nodm2013_scripts_styles() {
     wp_enqueue_style( 'nodm2013-bootstrap',
                       get_template_directory_uri() . '/css/bootstrap.min.css',
                       false, '2.9.1', 'all' );
-    wp_enqueue_style( 'nodm2013-bootstrap-glyphicons',
-                      get_template_directory_uri() . '/css/bootstrap-glyphicons.css',
-                      array('nodm2013-bootstrap'), '1.0.0', 'all' );
     wp_enqueue_style( 'nodm2013-style', get_stylesheet_uri() );
 
     /* load scripts */

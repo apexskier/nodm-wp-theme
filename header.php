@@ -22,20 +22,21 @@
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 <div class="color-stripe">
-	<div class="color red"></div>
-	<div class="color blue"></div>
-	<div class="color green"></div>
-	<div class="color orange"></div>
+	<div class="color one orange"></div>
+	<div class="color two red"></div>
+	<div class="color three green"></div>
+	<div class="color four blue"></div>
 </div>
 <div class="header-bg">
     <div class="container header">
+		<a class="home-link" href="/">Home</a>
 
         <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'nodm2013' ); ?>"><?php _e( 'Skip to content', 'nodm2013' ); ?></a>
 
         <div class="logo-action row">
-            <h1 class="site-title col-sm-6"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><span class="visible-lg">North Olympic <br />Discovery Marathon</span><span class="hidden-lg">NODM</span></a></h1>
+            <h1 class="site-title col-md-6 col-sm-3"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home" class="sr-only">North Olympic Discovery Marathon</a></h1>
 
-            <div class="action-links col-sm-6">
+            <div class="action-links col-md-6 col-sm-9">
                 <div class="pull-right">
                     <?php wp_nav_menu( array( 'theme_location' => 'action-links', 'menu_class' => 'action-links', 'container' => false ) ); ?>
                 </div>

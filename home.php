@@ -34,7 +34,7 @@
 	                                     'echo'           => '0',
                                          'items_wrap'     => '<div class="%2$s" id="%1$s">%3$s</div>',
                                          'depth'          => 0,) );
-        $eventsmenu = str_replace('class="menu-item', 'class="menu-item col-lg-4 col-6 ', $eventsmenu);
+        $eventsmenu = str_replace('class="menu-item', 'class="menu-item col-lg-4 col-xs-6 ', $eventsmenu);
         $eventsmenu = str_replace('li', 'div', $eventsmenu);
         echo $eventsmenu;
     ?>
