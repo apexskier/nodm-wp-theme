@@ -69,13 +69,17 @@ img.wp-post-image {
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.home-link {
+.home-link,
+.home-link:hover,
+.home-link:focus {
 	position: absolute;
 	height: 100%;
 	width: 50%;
 	display: block;
+	cursor: pointer;
 	top: 0;
-	visibility: hiddev;
+	color: transparent;
+	text-decoration: none;
 }
 	
 /* Navigation */
@@ -164,18 +168,15 @@ img.wp-post-image {
     right: 200px;
     left: auto;
 }
-@media (max-width: 980px) and (min-width: 768px) {
-    .site-title.span6 {
-        width: 22.92817679558011%;
-    }
-    .action-links.span6 {
-        width: 74.30939226519337%;
-    }
+@media (max-width: 991px) and (min-width: 768px) {
     #main-nav li.menu-item a {
         margin: 6px 0px 6px -3px;
     }
     #main-nav li.menu-item .sub-menu {
         left: -3px;
+    }
+    .logo-action {
+        padding-bottom: 2.5em 0 1em;
     }
 }
 /* mobile navigation */
@@ -296,7 +297,7 @@ blockquote p {
     background-position: center 10px;
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 219px;
+    min-height: 219px;
     padding-top: 64px;
 }
 .min-width {
@@ -364,8 +365,6 @@ h1 a {
 
 /* Slideshow */
 #slideshow {
-//    border-top: 1px solid rgba(0, 0, 0, 0.4);
-//    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -417,11 +416,11 @@ h1 a {
 }
 
 /* Left sidebar */
-/*#left-nav {
+#left-nav {
     margin: 1em 0;
 }
 #left-nav ul {
-    border: 1px solid #ccc;
+    border: 1px solid #e7e7e7;
     position: relative;
 }
 #left-nav ul:after, #left-nav ul:before {
@@ -436,19 +435,22 @@ h1 a {
 }
 #left-nav ul:after {
     border-color: rgba(238, 238, 238, 0);
-    border-bottom-color: #eee;
+    border-bottom-color: #f8f8f8;
     border-width: 10px;
     margin-left: -10px;
 }
 #left-nav ul:before {
     border-color: rgba(204, 204, 204, 0);
-    border-bottom-color: #ccc;
+    border-bottom-color: #e7e7e7;
     border-width: 11px;
     margin-left: -11px;
 }
+#left-nav .nav-stacked > li + li {
+    margin-top: 0;
+}
 #left-nav .nav-stacked > li > a {
-    background: #eee;
-    padding: 0.5em 0.6em;
+    background: #f8f8f8;
+    padding: 0.4em 0.6em;
     font-size: 16px;
     margin: 0;
 }
@@ -456,14 +458,6 @@ h1 a {
     color: inherit;
 }
 
-.featured-image {
-    margin: 0 0 0.7em 1.2em;
-    max-width: 46%;
-}
-#content {
-    margin-top: 1em;
-}
-*/
 .home.container {
     margin-top: -2em;
     position: relative;

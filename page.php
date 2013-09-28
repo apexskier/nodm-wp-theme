@@ -51,7 +51,7 @@ if (sizeof($children) > 0) {
 }
 ?>
 <?php if ($leftnav): ?>
-        <div id="left-nav" class="span2">
+        <div id="left-nav" class="col-md-2">
             <ul class="nav nav-stacked">
 <?php
 $page_args = array(
@@ -66,10 +66,7 @@ wp_list_pages($page_args); ?>
             </ul>
         </div>
 <?php endif; ?>
-        <div id="primary" class="site-content span<?php if ($leftnav) { echo '8'; } else { echo '9'; } ?>">
-    
-    
-    	<div id="primary" class="col-sm-9 col-lg-10">
+        <div id="primary" class="site-content <?php if ($leftnav) { echo 'col-md-7 col-lg-8'; } else { echo 'col-md-9 col-lg-10'; } ?> col-sm-9">
     		<div id="content" role="main">
             	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> aria-labeledby="#title-h2">
         			<?php while ( have_posts() ) : the_post(); ?>

@@ -17,10 +17,10 @@
             <img src="/wp-content/uploads/2013/06/Picture-146.jpg" alt="Runners rounding the bend" />
         </div>
     </div>
-    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <a class="left carousel-control" href="#slideshow" data-slide="prev">
         <span class="icon-prev"></span>
     </a>
-    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <a class="right carousel-control" href="#slideshow" data-slide="next">
         <span class="icon-next"></span>
     </a>
 </div>
