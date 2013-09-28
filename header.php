@@ -34,7 +34,7 @@
         <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'nodm2013' ); ?>"><?php _e( 'Skip to content', 'nodm2013' ); ?></a>
 
         <div class="logo-action row">
-            <h1 class="site-title col-md-6 col-sm-3"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home" class="sr-only">North Olympic Discovery Marathon</a></h1>
+            <h1 class="site-title col-md-6 col-sm-3 visuallyhidden"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home" class="sr-only">North Olympic Discovery Marathon</a></h1>
 
             <div class="action-links col-md-6 col-sm-9">
                 <div class="pull-right">
@@ -42,11 +42,11 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
                 <nav id="main-nav" role="navigation">
                 		<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu nav', 'container' => false ) ); ?>
         		</nav>
-        </div>		
+        </div>
     </div>
 </div>
