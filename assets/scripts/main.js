@@ -9,6 +9,7 @@
  * The routing is enclosed within an anonymous function so that you can
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
+const animationSpeed = 300;
 
 (function($) {
 
@@ -19,6 +20,63 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
+        // Navigation javascript
+        $navRoot = $('nav');
+        $hamburger = $navRoot.find('#mobile-nav-toggle');
+
+        var navRootRect = null;
+        var currentPageScroll = null;
+        $hamburger.click(function() {
+            $this = $(this);
+            if (!$navRoot.hasClass('open')) {
+                navRootRect = $navRoot[0].getBoundingClientRect();
+                currentPageScroll = $('.current-menu-item').position().top;
+
+                $navRoot.removeClass('closed').addClass('open').scrollTop(currentPageScroll).css({
+                    'top': navRootRect.top + 'px',
+                    'bottom': (window.innerHeight - navRootRect.bottom) + 'px'
+                }).find('.menu-item').show();
+                window.setTimeout(function() {
+                    $navRoot.addClass('animating').css({
+                        'top': "",
+                        'bottom': ""
+                    }).animate({
+                        'scrollTop': 0
+                    }, animationSpeed);
+                }, 0);
+                window.setTimeout(function() {
+                    $navRoot.removeClass('animating').addClass('open');
+                }, animationSpeed);
+            } else {
+                $navRoot.addClass('animating').css({
+                    'top': navRootRect.top + 'px',
+                    'bottom': (window.innerHeight - navRootRect.bottom) + 'px'
+                }).animate({
+                    'scrollTop': currentPageScroll
+                }, animationSpeed);
+                window.setTimeout(function() {
+                    $navRoot.css({
+                        'top': "",
+                        'bottom': ""
+                    }).removeClass('animating open').addClass('closed').find('.menu-item').not('.current-page-ancestor, .current_page_item').hide();
+                }, animationSpeed);
+            }
+        });
+        $navRoot.find('.menu-item-has-children').click(function(e) {
+            if (!$navRoot.hasClass('open')) {
+                $hamburger.click();
+                e.preventDefault();
+            }
+            $this = $(this);
+            $subMenu = $this.find('.sub-menu');
+            if (!$subMenu.is(":visible")) {
+                $subMenu.animate({
+                    height: 'toggle'
+                }, animationSpeed);
+                e.preventDefault();
+            }
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -75,3 +133,4 @@
   $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
