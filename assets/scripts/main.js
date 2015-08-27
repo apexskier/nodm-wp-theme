@@ -33,6 +33,8 @@ const animationSpeed = 300;
                 navRootRect = $navRoot[0].getBoundingClientRect();
                 currentPageScroll = $('.current-menu-item').position().top;
 
+                $('body').addClass('noscroll');
+
                 $navRoot.removeClass('closed').addClass('open').scrollTop(currentPageScroll).css({
                     'top': navRootRect.top + 'px',
                     'bottom': (window.innerHeight - navRootRect.bottom) + 'px'
@@ -49,6 +51,8 @@ const animationSpeed = 300;
                     $navRoot.removeClass('animating').addClass('open');
                 }, animationSpeed);
             } else {
+                $('body').removeClass('noscroll');
+
                 $navRoot.addClass('animating').css({
                     'top': navRootRect.top + 'px',
                     'bottom': (window.innerHeight - navRootRect.bottom) + 'px'
@@ -64,19 +68,58 @@ const animationSpeed = 300;
             }
         });
         $navRoot.find('.menu-item-has-children').click(function(e) {
-            if (!$navRoot.hasClass('open')) {
-                $hamburger.click();
-                e.preventDefault();
-            }
-            $this = $(this);
-            $subMenu = $this.find('.sub-menu');
-            if (!$subMenu.is(":visible")) {
-                $subMenu.animate({
-                    height: 'toggle'
-                }, animationSpeed);
-                e.preventDefault();
+            if (window.innerWidth <= 767) {
+                if (!$navRoot.hasClass('open')) {
+                    $hamburger.click();
+                    e.preventDefault();
+                }
+                $this = $(this);
+                $subMenu = $this.find('.sub-menu');
+                if (!$subMenu.is(":visible")) {
+                    $subMenu.animate({
+                        height: 'toggle'
+                    }, animationSpeed);
+                    e.preventDefault();
+                }
             }
         });
+        // -- end Navigation javascript
+
+        // Parallax javascript
+        var $parallaxEl = $('.header-parallax');
+        var $mountains = $parallaxEl.find('.mountains');
+        var $mountainsImg = $parallaxEl.find('img.mountains');
+        var $mountainsBg = $parallaxEl.find('.mountains.bg');
+        var $foothills = $parallaxEl.find('.foothills');
+        var $foothillsImg = $parallaxEl.find('img.foothills');
+        var $foothillsBg = $parallaxEl.find('.foothills.bg');
+        var $trees = $parallaxEl.find('.trees');
+        var $treesImg = $parallaxEl.find('img.trees');
+        var $treesBg = $parallaxEl.find('.trees.bg');
+
+        window.addEventListener('scroll', function(e) {
+            var sx = window.scrollY;
+            if (sx < 150) {
+                /*
+                var percent = sx / 150;
+                var mountainAdg = (50 * percent);
+                $mountainsImg.css('bottom', mountainAdg + 'px');
+                $mountainsBg.css('height', (40 + mountainAdg) + 'px');
+                var foothillAdg = (30 * percent);
+                $foothillsImg.css('bottom', foothillAdg + 'px');
+                $foothillsBg.css('height', (20 + foothillAdg) + 'px');
+                var treeAdg = (10 * percent);
+                $treesImg.css('bottom', treeAdg + 'px');
+                $treesBg.css('height', (3 + treeAdg) + 'px');
+                */
+
+                var percent = sx / 150;
+                $mountains.css('bottom', '-' + (40 * percent) + 'px');
+                $foothills.css('bottom', '-' + (20 * percent) + 'px');
+                $trees.css('bottom', '-' + (3 * percent) + 'px');
+            }
+        });
+        // -- end Parallax javascript
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

@@ -1,18 +1,35 @@
 <header>
+    <div class="header-parallax">
+        <div class="mountains-container">
+            <div class="mountains bg"></div>
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/images/mountains.svg" class="mountains" alt="">
+        </div>
+        <div class="foothills-container">
+            <div class="foothills bg"></div>
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/images/foothills-left.svg" class="foothills left" alt="">
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/images/foothills-right.svg" class="foothills right" alt="">
+        </div>
+        <div class="trees-container">
+            <div class="trees bg"></div>
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/images/trees-left.svg" class="trees left" alt="">
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/images/trees-right.svg" class="trees right" alt="">
+        </div>
+    </div>
     <div class="container" role="banner">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <h1 class="text-hide">
                     <a class="brand" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
                 </h1>
                 <a class="brand" href="<?= esc_url(home_url('/')); ?>">
-                    <img alt="<?php bloginfo('name'); ?>" src="http://placehold.it/300x150">
+                    <!--<img alt="<?php bloginfo('name'); ?>" src="http://placehold.it/300x150">-->
                 </a>
             </div>
-            <div class="col-md-8 text-right">
-                <br>
-                <h3>June 5th, 2016</h3>
+            <div class="col-sm-8 header-right">
+                <br class="hidden-xs">
+                <h3>June 5th, 2016<?php // print bloginfo('date'); ?></h3>
                 <button class="btn btn-lg btn-primary">Register</button>
+                <?php dynamic_sidebar('header-right'); ?>
             </div>
         </div>
     </div>
@@ -39,7 +56,7 @@
         ]);
     endif; ?>
 
-        <div alt="Toggle Menu" id="mobile-nav-toggle" class="visible-xs-inline-block" tabindex="1">
+        <div alt="Toggle Menu" id="mobile-nav-toggle" class="visible-xs-block" tabindex="1">
           <span></span>
           <span></span>
           <span></span>

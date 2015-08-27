@@ -1,0 +1,33 @@
+.display-case-bg {
+    background-image: url('http://placehold.it/1080x607');
+    background-position: center center;
+    background-size: cover;
+}
+.display-case {
+    padding: 20px;
+
+    .right {
+        padding-top: 50px;
+    }
+}
+
+// Desktop
+@media screen and (min-width: 768px) {
+    .display-case {
+        height: 400px;
+    }
+}
+
+// Mobile
+@media screen and (max-width: 767px) {
+    .display-case {
+        height: 200px;
+    }
+}
+
+.row.sponsors {
+    .sponsor-img {
+        background-color: #ccc;
+        text-align: center;
+    }
+}

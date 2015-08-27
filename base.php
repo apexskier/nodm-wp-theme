@@ -18,6 +18,20 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
+    <?php if (is_page('Home')) : ?>
+    <div class="display-case-bg">
+        <div class="container display-case">
+            <div class="row">
+                <div class="col-sm-8 left">
+                    <p class="lead">Tag line text goes here.</p>
+                </div>
+                <div class="col-sm-4 text-center right">
+                    <?php dynamic_sidebar('display-case'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
     <div class="wrap container" role="document">
       <div class="content row">
         <main class="main" role="main">
