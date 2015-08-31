@@ -88,31 +88,25 @@ const animationSpeed = 300;
         // Parallax javascript
         var $parallaxEl = $('.header-parallax');
         var $mountains = $parallaxEl.find('.mountains');
-        var $mountainsImg = $parallaxEl.find('img.mountains');
-        var $mountainsBg = $parallaxEl.find('.mountains.bg');
+        // var $mountainsImg = $parallaxEl.find('img.mountains');
+        // var $mountainsBg = $parallaxEl.find('.mountains.bg');
         var $foothills = $parallaxEl.find('.foothills');
-        var $foothillsImg = $parallaxEl.find('img.foothills');
-        var $foothillsBg = $parallaxEl.find('.foothills.bg');
+        // var $foothillsImg = $parallaxEl.find('img.foothills');
+        // var $foothillsBg = $parallaxEl.find('.foothills.bg');
         var $trees = $parallaxEl.find('.trees');
-        var $treesImg = $parallaxEl.find('img.trees');
-        var $treesBg = $parallaxEl.find('.trees.bg');
+        // var $treesImg = $parallaxEl.find('img.trees');
+        // var $treesBg = $parallaxEl.find('.trees.bg');
+
+        // var $rightEls = $parallaxEl.find('.right');
+        // var $rightFoothills = $parallaxEl.find('.right.foothills');
+        // var $rightTrees = $parallaxEl.find('.right.trees');
+        // var $leftEls = $parallaxEl.find('.left');
+        // var $leftFoothills = $parallaxEl.find('.left.foothills');
+        // var $leftTrees = $parallaxEl.find('.left.trees');
 
         window.addEventListener('scroll', function(e) {
             var sx = window.scrollY;
             if (sx < 150) {
-                /*
-                var percent = sx / 150;
-                var mountainAdg = (50 * percent);
-                $mountainsImg.css('bottom', mountainAdg + 'px');
-                $mountainsBg.css('height', (40 + mountainAdg) + 'px');
-                var foothillAdg = (30 * percent);
-                $foothillsImg.css('bottom', foothillAdg + 'px');
-                $foothillsBg.css('height', (20 + foothillAdg) + 'px');
-                var treeAdg = (10 * percent);
-                $treesImg.css('bottom', treeAdg + 'px');
-                $treesBg.css('height', (3 + treeAdg) + 'px');
-                */
-
                 var percent = sx / 150;
                 $mountains.css('bottom', '-' + (40 * percent) + 'px');
                 $foothills.css('bottom', '-' + (20 * percent) + 'px');

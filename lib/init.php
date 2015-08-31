@@ -82,3 +82,12 @@ function widgets_init() {
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+
+
+function cc_mime_types( $mimes ){
+    $mimes['svg'] = 'image/svg+xml';
+    $mimes['gpx'] = 'application/gpx+xml';
+    $mimes['geojson'] = 'application/json';
+    return $mimes;
+}
+add_filter('upload_mimes', __NAMESPACE__ . '\\cc_mime_types');

@@ -15,19 +15,37 @@ use Roots\Sage\Wrapper;
       </div>
     <![endif]-->
     <?php
-      do_action('get_header');
-      get_template_part('templates/header');
+    do_action('get_header');
+    get_template_part('templates/header');
+
+    if ($post->post_content != '') {
+        $dom = new DOMDocument();
+        $dom->loadHTML('<?xml encoding="utf-8" ?>' . $content);
+
+        foreach($dom->getElementsByTagName('h3') as $element) {
+            print_r($element->getAttribute('id'));
+        }
+    }
     ?>
     <?php if (is_page('Home')) : ?>
     <div class="display-case-bg">
         <div class="container display-case">
             <div class="row">
-                <div class="col-sm-8 left">
-                    <p class="lead">Tag line text goes here.</p>
+                <div class="col-sm-5 col-sm-push-7">
+                    <div class="text-center right">
+                        <?php dynamic_sidebar('display-case'); ?>
+                    </div>
                 </div>
-                <div class="col-sm-4 text-center right">
-                    <?php dynamic_sidebar('display-case'); ?>
+                <?php
+                $lead_text = get_theme_mod('lead_text');
+                if ($lead_text != ''):
+                ?>
+                <div class="col-sm-7 left-container">
+                    <div class="left">
+                        <?php echo $lead_text; ?>
+                    </div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

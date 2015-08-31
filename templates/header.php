@@ -26,15 +26,15 @@
                 </a>
             </div>
             <div class="col-sm-8 header-right">
-                <br class="hidden-xs">
-                <h3>June 5th, 2016<?php // print bloginfo('date'); ?></h3>
+                <h3><?php echo get_theme_mod('event_date'); ?></h3>
+                <p><small><?php echo get_theme_mod('event_details'); ?></small></p>
                 <button class="btn btn-lg btn-primary">Register</button>
                 <?php dynamic_sidebar('header-right'); ?>
             </div>
         </div>
     </div>
 </header>
-<nav role="navigation" class="closed">
+<nav role="navigation" class="closed <?php if ($post->post_parent || count(get_pages('child_of='.$post->ID)) > 0) { echo " has-parent"; }?>">
     <div class="container">
     <?php if (has_nav_menu('primary_navigation')) :
         wp_nav_menu([

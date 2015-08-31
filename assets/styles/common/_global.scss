@@ -1,3 +1,33 @@
+@import "common/_variables";
+
+body {
+    font-family: $body-font;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+    font-family: $header-font;
+}
+
 .noscroll {
     overflow: hidden;
+}
+
+$btn-primary-color: #ffa205;
+.btn.btn-primary {
+    color: #222;
+    background-color: $btn-primary-color;
+    border-color: darken($btn-primary-color, 20%);
+    &:hover, &:focus {
+        background-color: darken($btn-primary-color, 10%);
+        border-color: darken(darken($btn-primary-color, 10%), 20%);
+    }
+}
+
+.page-header {
+    margin-top: 20px;
+}
+
+.sidebar {
+    margin-top: 20px;
 }

@@ -1,28 +1,50 @@
+@import "common/_variables";
+
 .display-case-bg {
-    background-image: url('http://placehold.it/1080x607');
     background-position: center center;
     background-size: cover;
 }
 .display-case {
-    padding: 20px;
+    position: relative;
 
     .right {
-        padding-top: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .left {
+        font-family: $header-font;
+        color: #fff;
+        font-weight: bold;
+        background-color: #000;
+        background-color: rgba(0, 0, 0, 0.75);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        margin-bottom: 0;
+        bottom: 0;
+        border-top: 3px solid $light-blue;
+        height: 100%;
+        font-size: 2.1rem;
     }
 }
 
 // Desktop
 @media screen and (min-width: 768px) {
     .display-case {
-        height: 400px;
+        height: 320px;
+        .left-container {
+            position: absolute;
+            bottom: 0;
+        }
+        .right {
+            margin-top: 15%;
+        }
     }
 }
 
 // Mobile
 @media screen and (max-width: 767px) {
-    .display-case {
-        height: 200px;
-    }
 }
 
 .row.sponsors {

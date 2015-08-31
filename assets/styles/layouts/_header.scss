@@ -64,6 +64,10 @@ header {
 
     .header-right {
         text-align: right;
+        h3, p {
+            font-family: $header-font;
+            margin-bottom: 5px;
+        }
     }
 }
 
@@ -81,7 +85,13 @@ $nav-color: $dark-blue;
 $hover-color: $light-blue;
 $nav-text: #fff;
 
+@media screen and (min-width: 768px) {
+    nav.has-parent {
+        border-bottom: 32px solid $hover-color;
+    }
+}
 nav {
+    font-family: $header-font;
     background-color: $nav-color;
     color: $nav-text;
     position: relative;
@@ -227,6 +237,9 @@ nav {
     transform: rotate(0deg);
     transition: ($animation-speed * 2) ease-in-out $animation-speed;
     cursor: pointer;
+    &:hover span {
+        background-color: darken($nav-text, 20%);
+    }
 
     span {
         &:nth-child(1),
@@ -236,7 +249,7 @@ nav {
             position: absolute;
             height: 4px;
             width: 53.846%; // 28px
-            background: #222;
+            background-color: $nav-text;
             border-radius: 3px;
             opacity: 1;
             left: 12px;

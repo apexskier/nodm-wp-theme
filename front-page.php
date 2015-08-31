@@ -1,5 +1,17 @@
 <!-- display-case is above this ^^^ -->
 
+<div class="row">
+    <div class="col-md-6">
+        <h3>Countdown</h3>
+        <h3>Social Media</h3>
+    </div>
+    <div class="col-md-6">
+        <?php while (have_posts()) : the_post(); ?>
+          <?php get_template_part('templates/content', 'page'); ?>
+        <?php endwhile; ?>
+    </div>
+</div>
+
 <h3>Sponsors</h3>
 <div class="row sponsors">
     <div class="col-md-6 col-md-push-6">
@@ -42,10 +54,3 @@
     </div>
 </div>
 
-<h3>Countdown</h3>
-
-<h3>Content</h3>
-
-<?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/content', 'page'); ?>
-<?php endwhile; ?>
