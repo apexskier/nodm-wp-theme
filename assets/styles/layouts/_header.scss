@@ -7,7 +7,7 @@ header {
     background-color: #fff;
     position: relative;
     z-index: 25;
-    height: 150px;
+    min-height: 150px;
 
     .header-parallax {
         height: 100%;
@@ -62,11 +62,21 @@ header {
         padding: 0;
     }
 
+    .brand img {
+        margin-top: 20px;
+        max-height: 110px;
+        max-width: 100%;
+    }
+
     .header-right {
         text-align: right;
         h3, p {
             font-family: $header-font;
             margin-bottom: 5px;
+            margin-right: -5px;
+            padding-right: 5px;
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
         }
     }
 }
@@ -77,6 +87,9 @@ header {
         .header-right {
             text-align: center;
             margin-bottom: 20px;
+            h3, p {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
         }
     }
 }

@@ -1,0 +1,39 @@
+#social-media {
+    .floating > div {
+        float: left;
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    > div {
+        margin-bottom: 15px;
+        font-size: 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.side-social-media {
+    margin-top: 20px;
+
+    .facebook > div {
+        top: -2px;
+    }
+
+    > div {
+        float: left;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        height: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+            margin-right: 0;
+        }
+    }
+}

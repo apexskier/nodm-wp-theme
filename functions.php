@@ -10,17 +10,19 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
-  'lib/utils.php',                 // Utility functions
-  'lib/init.php',                  // Initial theme setup and constants
-  'lib/wrapper.php',               // Theme wrapper class
-  'lib/conditional-tag-check.php', // ConditionalTagCheck class
-  'lib/config.php',                // Configuration
-  'lib/assets.php',                // Scripts and stylesheets
-  'lib/titles.php',                // Page titles
-  'lib/extras.php',                // Custom functions
-  'lib/admin.php',                 // Admin page
-  'lib/sponsor-type.php',          // Custom sponsor type
-  'lib/anchor-links.php',          // Add anchor ids to content
+  'lib/utils.php',                  // Utility functions
+  'lib/init.php',                   // Initial theme setup and constants
+  'lib/wrapper.php',                // Theme wrapper class
+  'lib/conditional-tag-check.php',  // ConditionalTagCheck class
+  'lib/config.php',                 // Configuration
+  'lib/assets.php',                 // Scripts and stylesheets
+  'lib/titles.php',                 // Page titles
+  'lib/extras.php',                 // Custom functions
+  'lib/admin.php',                  // Admin page
+  'lib/sponsor-type.php',           // Custom sponsor type
+  'lib/random-sponsors-widget.php', // Random sponsors widget
+  'lib/social-media-widget.php',    // Custom social media widget
+  'lib/anchor-links.php',           // Add anchor ids to content
 ];
 
 foreach ($sage_includes as $file) {
