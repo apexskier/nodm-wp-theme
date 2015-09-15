@@ -21,6 +21,14 @@ function setup_customization( $wp_customize ) {
         'type'      => 'textfield'
     ));
 
+    $wp_customize->add_setting('event_start_hour', array());
+    $wp_customize->add_control('event_start_hour', array(
+        'label'     => __('Event Start Hour', 'Sage'),
+        'section'   => 'title_tagline',
+        'settings'  => 'event_start_hour',
+        'type'      => 'textfield'
+    ));
+
     $wp_customize->add_section('home_page' , array(
         'title' => __('Home Page', 'Sage'),
     ));
@@ -40,6 +48,17 @@ function setup_customization( $wp_customize ) {
             'label' => 'Image Upload',
             'section' => 'home_page',
             'settings' => 'lead_photo'
+        )
+    ));
+
+    $wp_customize->add_setting('second_image');
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize,
+        'second_image',
+        array(
+            'label' => 'Second Home Page Image (none to disable)',
+            'section' => 'home_page',
+            'settings' => 'second_image'
         )
     ));
 }

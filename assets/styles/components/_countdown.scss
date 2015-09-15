@@ -1,0 +1,88 @@
+@import "common/_variables";
+
+.countdown {
+    padding-bottom: 10px;
+    perspective: 1000;
+
+    span {
+        display: inline-block;
+    }
+
+    .day-text,
+    .hour-text,
+    .minute-text,
+    .second-text {
+        position: relative;
+        bottom: 2px;
+    }
+
+    .day,
+    .hour,
+    .minute,
+    .second {
+        // transition: 0.6s;
+        // transform-style: preserve-3d;
+        // transition: transform 0.5s ease-in-out;
+        // transform: rotateX(90deg);
+        font-family: $header-font;
+        font-weight: bold;
+        font-size: 21px;
+        color: #fff;
+        border-radius: 4px;
+        line-height: 25px;
+        padding: 0 3px;
+
+        &.animate {
+            // transform: rotateX(90deg);
+            // animation-duration: 0.9s;
+            // animation-name: horizontalflip;
+            // animation-iteration-count: 1;
+            // animation-duration: 0.4s;
+            // animation-name: change;
+            // animation-iteration-count: 1;
+        }
+    }
+
+    .day {
+        background-color: $dark-blue;
+    }
+    .hour {
+        background-color: $light-blue;
+    }
+    .minute {
+        background-color: $light-green;
+    }
+    .second {
+        background-color: $medium-green;
+    }
+}
+
+@keyframes change {
+    0% {
+        opacity: .5;
+    }
+    25% {
+        opacity: .75;
+    }
+    50% {
+        opacity: .875;
+    }
+    25% {
+        opacity: .9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes horizontalflip {
+    0% {
+        transform: rotateX(90deg);
+    }
+    50% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(90deg);
+    }
+}

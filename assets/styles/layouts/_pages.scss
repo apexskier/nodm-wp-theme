@@ -1,8 +1,13 @@
 @import "common/_variables";
 
-.display-case-bg {
+.display-case-bg,
+.second-image-bg {
     background-position: center center;
     background-size: cover;
+}
+.second-image-bg {
+    margin-top: 20px;
+    height: 400px;
 }
 .display-case {
     position: relative;

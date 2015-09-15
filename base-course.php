@@ -18,6 +18,7 @@ use Roots\Sage\Wrapper;
 do_action('get_header');
 get_template_part('templates/header');
 ?>
+    <h1>TESTING!!!</h1>
     <?php if (is_page('Home')) : ?>
     <div class="display-case-bg">
         <div class="container display-case">

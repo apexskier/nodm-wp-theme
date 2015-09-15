@@ -83,6 +83,11 @@ const animationSpeed = 300;
                 }
             }
         });
+        window.addEventListener('keyup', function(e) {
+            if ((e.keyCode || e.which) === 27 && window.innerWidth <= 767 && $navRoot.hasClass('open')) {
+                $hamburger.click();
+            }
+        });
         // -- end Navigation javascript
 
         // Parallax javascript
@@ -96,6 +101,7 @@ const animationSpeed = 300;
         var $trees = $parallaxEl.find('.trees');
         // var $treesImg = $parallaxEl.find('img.trees');
         // var $treesBg = $parallaxEl.find('.trees.bg');
+        // var $logo = $('.brand img');
 
         // var $rightEls = $parallaxEl.find('.right');
         // var $rightFoothills = $parallaxEl.find('.right.foothills');
@@ -103,17 +109,58 @@ const animationSpeed = 300;
         // var $leftEls = $parallaxEl.find('.left');
         // var $leftFoothills = $parallaxEl.find('.left.foothills');
         // var $leftTrees = $parallaxEl.find('.left.trees');
+        var hh = $parallaxEl.innerHeight();
 
-        window.addEventListener('scroll', function(e) {
-            var sx = window.scrollY;
-            if (sx < 150) {
-                var percent = sx / 150;
+        function parallaxResize () {
+            hh = $parallaxEl.innerHeight();
+        }
+
+        function parallaxScroll (e, sy) {
+            if (sy < hh) {
+                var percent = sy / 150;
                 $mountains.css('bottom', '-' + (40 * percent) + 'px');
                 $foothills.css('bottom', '-' + (20 * percent) + 'px');
+                // $logo.css('margin-top', ((20 * percent) + 20) + 'px');
                 $trees.css('bottom', '-' + (3 * percent) + 'px');
             }
-        });
+        }
         // -- end Parallax javascript
+
+        // Back to top affix
+        var $topLink = $('.top-link'),
+            $content = $('.content'),
+            topLinkOffsetTop = $topLink.offset().top;
+
+        function topAffixScroll (e, sy) {
+            var offset = sy - topLinkOffsetTop;
+            if (offset > -15) {
+                $topLink
+                    .addClass('affix-free')
+                    .removeClass('affix-top affix-bottom');
+            } else {
+                $topLink
+                    .addClass('affix-top')
+                    .removeClass('affix-free affix-bottom');
+            }
+        }
+
+        function topAffixResize () {
+            $topLink.css('right', $content.offset().left + 'px');
+        }
+
+        // init
+        topAffixScroll(null, window.scrollY);
+        topAffixResize(null);
+
+        window.addEventListener('scroll', function(e) {
+            var sy = window.scrollY;
+            parallaxScroll(e, sy);
+            topAffixScroll(e, sy);
+        });
+        window.addEventListener('resize', function(e) {
+            parallaxResize(e);
+            topAffixResize(e);
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

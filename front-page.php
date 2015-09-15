@@ -3,10 +3,15 @@
 <div class="row">
     <div class="col-md-6">
         <h3>Countdown</h3>
-        <span class="countdown">
-        </span>
+        <p class="countdown">
+            <span class="day"></span> <span class="day-text"></span>
+            <span class="hour"></span> <span class="hour-text"></span>
+            <span class="minute"></span> <span class="minute-text"></span>
+            <span class="second"></span> <span class="second-text"></span>
+        </p>
 
         <script>
+(function () {
         document.addEventListener('DOMContentLoaded', function() {
             var dateMatch = /(\w+) (\d+)\w+, (\d+)/.exec('<?php echo get_theme_mod('event_date'); ?>');
             if (dateMatch) {
@@ -29,13 +34,66 @@
                 var day = dateMatch[2];
                 var year = dateMatch[3];
             }
-            var eventDate = new Date(year, month, day);
+            var eventDate = new Date(year, month, day, <?php echo get_theme_mod('event_start_hour'); ?>);
 
-            window.setInterval(function() {
+            var containerEl = document.getElementsByClassName('countdown')[0];
+            var dayEl = containerEl.getElementsByClassName('day')[0];
+            var hourEl = containerEl.getElementsByClassName('hour')[0];
+            var minuteEl = containerEl.getElementsByClassName('minute')[0];
+            var secondEl = containerEl.getElementsByClassName('second')[0];
+            var dayTextEl = containerEl.getElementsByClassName('day-text')[0];
+            var hourTextEl = containerEl.getElementsByClassName('hour-text')[0];
+            var minuteTextEl = containerEl.getElementsByClassName('minute-text')[0];
+            var secondTextEl = containerEl.getElementsByClassName('second-text')[0];
+
+            function tick() {
+                dayEl.classList.remove('animate');
+                hourEl.classList.remove('animate');
+                minuteEl.classList.remove('animate');
+                secondEl.classList.remove('animate');
                 var now = new Date();
-            }, 1000);
-            console.log(eventDate);
+                var dateDiff = (eventDate - now);
+                var dayDiff = dateDiff / (1000 * 60 * 60 * 24);
+                var dayInt = parseInt(dayDiff);
+                var hourDiff = (dayDiff - dayInt) * 24;
+                var hourInt = parseInt(hourDiff);
+                var minuteDiff = (hourDiff - hourInt) * 60;
+                var minuteInt = parseInt(minuteDiff);
+                var secondDiff = (minuteDiff - minuteInt) * 60;
+                var secondInt = parseInt(secondDiff);
+                if (dayEl.textContent != dayInt) {
+                    window.setTimeout(function () {
+                        dayEl.classList.add('animate');
+                    });
+                }
+                dayEl.textContent = dayInt;
+                dayTextEl.textContent = 'day' + (dayInt == 1 ? '' : 's');
+                if (hourEl.textContent != hourInt) {
+                    window.setTimeout(function () {
+                        hourEl.classList.add('animate');
+                    });
+                }
+                hourEl.textContent = hourInt;
+                hourTextEl.textContent = 'hour' + (hourInt == 1 ? '' : 's');
+                if (minuteEl.textContent != minuteInt) {
+                    window.setTimeout(function () {
+                        minuteEl.classList.add('animate');
+                    });
+                }
+                minuteEl.textContent = minuteInt;
+                minuteTextEl.textContent = 'minute' + (minuteInt == 1 ? '' : 's');
+                if (secondEl.textContent != secondInt) {
+                    window.setTimeout(function () {
+                        secondEl.classList.add('animate');
+                    });
+                }
+                secondEl.textContent = secondInt;
+                secondTextEl.textContent = 'second' + (secondInt == 1 ? '' : 's');
+            }
+            tick();
+            window.setInterval(tick, 1000);
         });
+})();
         </script>
         <h3>Follow Us!</h3>
         <div id="social-media">
@@ -60,46 +118,3 @@
         <?php endwhile; ?>
     </div>
 </div>
-
-<h3>Sponsors</h3>
-<div class="row sponsors">
-    <div class="col-md-6 col-md-push-6">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="sponsor-img"><img src="http://placehold.it/165x125" style="max-width: 100%;"></div>
-            </div>
-            <br class="visible-xs-inline">
-            <div class="col-sm-8">
-                <div class="sponsor-img"><img src="http://placehold.it/360x125" style="max-width: 100%;"></div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="sponsor-img"><img src="http://placehold.it/360x218" style="max-width: 100%;"></div>
-            </div>
-            <br class="visible-xs-inline">
-            <div class="col-sm-4">
-                <div class="sponsor-img"><img src="http://placehold.it/165x218" style="max-width: 100%;"></div>
-            </div>
-        </div>
-        <br>
-    </div>
-    <div class="col-md-6 col-md-pull-6">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="sponsor-img"><img src="http://placehold.it/165x125" style="max-width: 100%;"></div>
-                <br>
-                <div class="sponsor-img"><img src="http://placehold.it/165x218" style="max-width: 100%;"></div>
-            </div>
-            <br class="visible-xs-inline">
-            <div class="col-sm-8">
-                <div class="sponsor-img"><img src="http://placehold.it/360x218" style="max-width: 100%;"></div>
-                <br>
-                <div class="sponsor-img"><img src="http://placehold.it/360x125" style="max-width: 100%;"></div>
-            </div>
-        </div>
-        <br>
-    </div>
-</div>
-

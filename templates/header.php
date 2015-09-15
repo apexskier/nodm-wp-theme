@@ -17,15 +17,15 @@
     </div>
     <div class="container" role="banner">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-lg-6 col-md-7 col-sm-6">
                 <h1 class="text-hide">
                     <a class="brand" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
                 </h1>
                 <a class="brand" href="<?= esc_url(home_url('/')); ?>">
-                    <img alt="<?php bloginfo('name'); ?>" src="http://placehold.it/300x150">
+                    <img alt="<?php bloginfo('name'); ?>" src="<?php echo get_template_directory_uri(); ?>/dist/images/nodm-logo.svg">
                 </a>
             </div>
-            <div class="col-sm-6 header-right">
+            <div class="col-lg-6 col-md-5 col-sm-6 header-right">
                 <h3><?php echo get_theme_mod('event_date'); ?></h3>
                 <p><small><?php echo get_theme_mod('event_details'); ?></small></p>
                 <button class="btn btn-lg btn-primary">Register</button>

@@ -1,5 +1,8 @@
 @import "common/_variables";
 
+$link-color: mix($light-green, $light-blue);
+$link-color-hover: darken($link-color, 20%);
+
 body {
     font-family: $body-font;
     font-size: 16px;
@@ -30,5 +33,17 @@ $btn-primary-color: #ffa205;
 
 .sidebar {
     margin-top: 20px;
+}
+
+// Links
+
+a {
+    //color: $link-color;
+    // text-decoration: u2;
+
+    &:hover,
+    &:focus {
+        //color: $link-hover-color;
+    }
 }
 

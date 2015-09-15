@@ -1,0 +1,25 @@
+.sidebar {
+    text-align: right;
+
+    .widget {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .widget_anchor_links {
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+        }
+    }
+}

@@ -20,7 +20,7 @@ function sponsor_register() {
     $args = array(
         'labels' => $labels,
         'public' => true,
-        'publicly_queryable' => true,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'query_var' => true,
         // 'menu_icon' => get_stylesheet_directory_uri() . '/article16.png',
@@ -29,7 +29,7 @@ function sponsor_register() {
         'hierarchical' => false,
         'menu_position' => null,
         'supports' => array('title','thumbnail')
-      );
+    );
 
     register_post_type( 'sponsor' , $args );
 }

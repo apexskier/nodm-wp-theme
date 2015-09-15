@@ -34,17 +34,24 @@ class Random_Sponsors extends WP_Widget {
         add_image_size($name = 'sponsor', $width = 156);
         global $post;
         for ($i = 5; $i >= 1; $i--) {
-            $args = array( 'post_type' => 'sponsor', 'posts_per_page' => $instance['level' . $i], 'orderby' => 'rand', 'meta_key' => 'sponsor_level', 'meta_value' => $i );
+            $args = array(
+                'post_type' => 'sponsor',
+                'posts_per_page' => $instance['level' . $i],
+                'orderby' => 'rand',
+                'meta_key' => 'sponsor_level',
+                'meta_value' => $i
+            );
             $loop = new WP_Query( $args );
             while ( $loop->have_posts() ) : $loop->the_post();
             ?>
                 <div class="individual-sponsor">
                     <a target="_blank" href="<?php $key = "sponsor_url"; echo get_post_meta($post->ID, $key, true); ?>"><?php
                     $attr = array(
-                        'alt'   => $title . ' logo',
-                        'title' => $title,
+                        'alt'    => $title . ' logo',
+                        'title'  => $title,
+                        'target' => '_blank'
                     );
-                    the_post_thumbnail('sponsor');
+                    the_post_thumbnail('sponsor', $attr);
                     ?></a>
                 </div><!-- #post -->
             <?php

@@ -12,6 +12,7 @@
 $sage_includes = [
   'lib/utils.php',                  // Utility functions
   'lib/init.php',                   // Initial theme setup and constants
+  'lib/images.php',                 //
   'lib/wrapper.php',                // Theme wrapper class
   'lib/conditional-tag-check.php',  // ConditionalTagCheck class
   'lib/config.php',                 // Configuration
@@ -20,9 +21,12 @@ $sage_includes = [
   'lib/extras.php',                 // Custom functions
   'lib/admin.php',                  // Admin page
   'lib/sponsor-type.php',           // Custom sponsor type
+  'lib/course-type.php',            // Custom course type
   'lib/random-sponsors-widget.php', // Random sponsors widget
+  'lib/fancy-sponsors-widget.php',  // Home page fancy sponsors widget
   'lib/social-media-widget.php',    // Custom social media widget
   'lib/anchor-links.php',           // Add anchor ids to content
+  'lib/anchor-links-widget.php',    // Setup anchor links widget.
 ];
 
 foreach ($sage_includes as $file) {

@@ -19,21 +19,21 @@
 }
 
 .side-social-media {
-    margin-top: 20px;
+    margin-bottom: -5px;
 
     .facebook > div {
         top: -2px;
     }
 
     > div {
-        float: left;
+        float: right;
         margin-bottom: 5px;
-        margin-right: 10px;
+        margin-left: 10px;
         height: 20px;
 
         &:last-child {
             margin-bottom: 0;
-            margin-right: 0;
+            margin-left: 0;
         }
     }
 }
