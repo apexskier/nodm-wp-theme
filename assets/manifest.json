@@ -2,10 +2,14 @@
   "dependencies": {
     "main.js": {
       "files": [
-        "scripts/main.js",
-        "scripts/navigation.js"
+        "scripts/main.js"
       ],
       "main": true
+    },
+    "gpx.js": {
+      "files": [
+        "scripts/gpx.js"
+      ]
     },
     "main.css": {
       "files": [

@@ -1,0 +1,65 @@
+@import "common/_variables";
+
+#map {
+    height: 400px;
+    margin-top: 15px;
+}
+
+.course-title-color {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    border-radius: 9px;
+}
+
+.map-controls-container {
+    overflow-x: auto;
+    overflow-scrolling: touch;
+}
+.map-container {
+    background-color: $light-blue;
+    margin-bottom: 5px;
+
+    .map-controls {
+        text-align: center;
+        font-family: $header-font;
+        color: $nav-text;
+        display: table;
+        width: 100%;
+
+        .map-control {
+            display: table-cell;
+
+            a {
+                color: $nav-text;
+                padding: 5px 8px;
+                font-size: 1.6rem;
+                display: inline-block;
+                width: 100%;
+                font-weight: bold;
+
+                &:hover, &:focus {
+                    color: $nav-text;
+                    text-decoration: none;
+                }
+                &.enabled {
+                }
+                &.disabled {
+                    color: darken($nav-text, 20%);
+                }
+            }
+        }
+
+        .icons-control {
+            background-color: #777777;
+        }
+    }
+}
+
+// Mobile styling
+@media screen and (max-width: 767px) {
+    .map-controls {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

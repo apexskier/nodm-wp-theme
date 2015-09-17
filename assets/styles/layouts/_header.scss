@@ -98,10 +98,6 @@ header {
     }
 }
 
-$nav-color: $dark-blue;
-$hover-color: $light-blue;
-$nav-text: #fff;
-
 @media screen and (min-width: 768px) {
     nav.has-parent {
         border-bottom: 32px solid $hover-color;

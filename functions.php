@@ -22,6 +22,7 @@ $sage_includes = [
   'lib/admin.php',                  // Admin page
   'lib/sponsor-type.php',           // Custom sponsor type
   'lib/course-type.php',            // Custom course type
+  'lib/course-icons-type.php',       // Custom course type
   'lib/random-sponsors-widget.php', // Random sponsors widget
   'lib/fancy-sponsors-widget.php',  // Home page fancy sponsors widget
   'lib/social-media-widget.php',    // Custom social media widget

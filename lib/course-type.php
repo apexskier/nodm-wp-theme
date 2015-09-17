@@ -45,23 +45,38 @@ function course_color_script(){
 }
 add_action('admin_enqueue_scripts', 'course_color_script');
 
+function course_save_details() {
+    global $post;
+    update_post_meta($post->ID, "course_path", $_POST["course_path"]);
+    update_post_meta($post->ID, "course_title", $_POST["course_title"]);
+    update_post_meta($post->ID, "course_id", $_POST["course_id"]);
+    update_post_meta($post->ID, "course_color", $_POST["course_color"]);
+    update_post_meta($post->ID, "course_order", $_POST["course_order"]);
+}
+add_action('save_post', 'course_save_details');
+
 function course_meta() {
     global $post;
     $custom = get_post_custom($post->ID);
-    $course_path = $custom["course_file_path"][0];
-    $course_title = $custom["course_file_title"][0];
-    $course_id = $custom["course_file_id"][0];
+    $course_path = $custom["course_path"][0];
+    $course_title = $custom["course_title"][0];
+    $course_id = $custom["course_id"][0];
     $course_color = $custom["course_color"][0];
+    $course_order = $custom["course_order"][0];
     ?>
     <p>
         <input id="upload_image_button" type="button" value="GPS File" class="button" data-uploader_title="Select a GPS File" data-uploader_button_text="Select">
-        <input id="course_file_path" type="text" name="course_file_path" value="<?php echo $course_path; ?>"> <span id="course_file_title_text"><?php echo $course_title; ?></span>
-        <input id="course_file_title" type="hidden" name="course_file_title" value="<?php echo $course_title; ?>">
-        <input id="course_file_id" type="hidden" name="course_file_id" value="<?php echo $course_id; ?>">
+        <input id="course_path" type="text" name="course_path" value="<?php echo $course_path; ?>"> <span id="course_title_text"><?php echo $course_title; ?></span>
+        <input id="course_title" type="hidden" name="course_title" value="<?php echo $course_title; ?>">
+        <input id="course_id" type="hidden" name="course_id" value="<?php echo $course_id; ?>">
     </p>
     <p>
         <label for="course_color">Color</label><br />
         <input id="course_color" type="text" name="course_color" value="<?php echo $course_color; ?>" style="color: <?php echo $course_color; ?>; border-color: <?php echo $course_color; ?>;">
+    </p>
+    <p>
+        <label for="course_order">Order</label><br />
+        <input id="course_order" type="number" name="course_order" value="<?php echo $course_order; ?>" style="color: <?php echo $course_order; ?>; border-color: <?php echo $course_order; ?>;">
     </p>
     <script>
     (function () {
@@ -69,7 +84,7 @@ function course_meta() {
             // Uploading files
             var file_frame;
             var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
-            var set_to_post_id = $('#course_file_id').val(); // Set this
+            var set_to_post_id = $('#course_id').val(); // Set this
 
             $('#upload_image_button').on('click', function(e) {
                 e.preventDefault();
@@ -103,11 +118,11 @@ function course_meta() {
                     attachment = file_frame.state().get('selection').first().toJSON();
 
                     // Do something with attachment.id and/or attachment.url here
-                    $('#course_file_path').val(attachment.url);
-                    $('#course_file_title').val(attachment.title);
-                    $('#course_file_id').val(attachment.id);
+                    $('#course_path').val(attachment.url);
+                    $('#course_title').val(attachment.title);
+                    $('#course_id').val(attachment.id);
                     set_to_post_id = attachment.id;
-                    $('#course_file_title_text').text(attachment.title);
+                    $('#course_title_text').text(attachment.title);
                     console.log(attachment);
 
                     // Restore the main post ID
@@ -137,13 +152,4 @@ function course_meta() {
     </script>
     <?php
 }
-
-function course_save_details() {
-    global $post;
-    update_post_meta($post->ID, "course_file_path", $_POST["course_file_path"]);
-    update_post_meta($post->ID, "course_file_title", $_POST["course_file_title"]);
-    update_post_meta($post->ID, "course_file_id", $_POST["course_file_id"]);
-    update_post_meta($post->ID, "course_color", $_POST["course_color"]);
-}
-add_action('save_post', 'course_save_details');
 
