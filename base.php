@@ -61,9 +61,7 @@ if ($lead_text != ''):
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <?php dynamic_sidebar('home-content'); ?>
-        </div>
+        <?php dynamic_sidebar('home-content'); ?>
     </div>
     <?php endif; ?>
 <?php

@@ -21,8 +21,13 @@
 .side-social-media {
     margin-bottom: -5px;
 
-    .facebook > div {
-        top: -2px;
+    .facebook {
+        max-width: 100%;
+        overflow-x: hidden;
+
+        > div {
+            top: -2px;
+        }
     }
 
     > div {

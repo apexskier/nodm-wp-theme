@@ -19,10 +19,10 @@ do_action('get_header');
 get_template_part('templates/header');
 
 function get_order($a, $b) {
-    $a_order = get_post_meta($a->ID, 'course_path', true);
-    $b_order = get_post_meta($b->ID, 'course_path', true);
-    if ($a == $b) return 0;
-    return ($a < $b) ? -1 : 1;
+    $a_order = get_post_meta($a->ID, 'course_order', true);
+    $b_order = get_post_meta($b->ID, 'course_order', true);
+    if ($a_order == $b_order) return 0;
+    return ($a_order < $b_order) ? -1 : 1;
 }
 
 $icons = get_posts(array(
@@ -50,7 +50,7 @@ usort($courses, 'get_order');
             <div class="row">
                 <div class="map-controls col-sm-12">
 <?php foreach ($courses as $course): ?>
-                    <div class="map-control gpx-control" style="background-color: <?php echo get_post_meta($course->ID, 'course_color', true) ?>;">
+                    <div class="map-control gpx-control gpx-control-<?php echo $course->ID; ?>" style="background-color: <?php echo get_post_meta($course->ID, 'course_color', true) ?>;">
                         <a data-courseid="<?php echo $course->ID; ?>" class="enabled" href="#"><?php echo $course->post_title; ?></a>
                     </div>
 <?php endforeach; ?>
@@ -61,7 +61,7 @@ usort($courses, 'get_order');
             <div class="row">
                 <div class="map-controls col-sm-12">
 <?php foreach ($icons as $icon): ?>
-                    <div class="map-control icons-control">
+                    <div class="map-control icons-control icons-control-<?php echo $icon->ID; ?>">
                         <a data-iconsid="<?php echo $icon->ID; ?>" class="enabled" href="#">
                             <?php echo $icon->post_title; ?>
                             <img src="<?php echo get_post_meta($icon->ID, 'course_icons_icon_path', true); ?>" alt="<?php echo $icon->post_title; ?> icon">
@@ -220,17 +220,31 @@ wp_footer();
     $('.gpx-control a').on('click', function(e) {
         e.preventDefault();
         var $this = $(this).toggleClass('enabled disabled');
-        var key = 'course' + $this.data('courseid');
+        var id = $this.data('courseid');
+        var key = 'course' + id;
         var layer = gpxMap[key];
         if ($this.hasClass('enabled')) {
             map.addLayer(layer);
             map.fitBounds(layer.getBounds());
+            if (oneToOnePathsToIcons.hasOwnProperty(id)) {
+                var v = oneToOnePathsToIcons[id];
+                $('.icons-control-' + v + ' a').addClass('enabled').removeClass('disabled');
+                map.addLayer(gpxMap['icons' + v]);
+            }
         } else {
             map.removeLayer(layer);
+            if (oneToOnePathsToIcons.hasOwnProperty(id)) {
+                var v = oneToOnePathsToIcons[id];
+                $('.icons-control-' + v + ' a').removeClass('enabled').addClass('disabled');
+                map.removeLayer(gpxMap['icons' + v]);
+            }
         }
     });
 
     var getJsons = [];
+    var iconsToPaths = {};
+    var pathsToIcons = {};
+    var oneToOnePathsToIcons = {};
     function getPoints(id, layerName, url, icon) {
         return $.getJSON(url, function(data) {
             var sqicon = L.icon({
@@ -253,14 +267,42 @@ wp_footer();
             geojsonLayer.addTo(map);
         });
     }
-<?php foreach ($icons as $icon): ?>
+<?php
+foreach ($icons as $icon): ?>
     getJsons.push(getPoints(
         <?php echo $icon->ID; ?>,
         '<?php echo $icon->post_title; ?>',
         '<?php echo get_post_meta($icon->ID, 'course_icons_path', true); ?>',
         '<?php echo get_post_meta($icon->ID, 'course_icons_icon_path', true); ?>'
     ));
-<?php endforeach; ?>
+    iconsToPaths[<?php echo $icon->ID; ?>] = [<?php
+    foreach (get_post_meta($icon->ID, 'course_icons_course_link', true) as $pathId) {
+        echo $pathId, ', ';
+    } ?>];
+<?php
+endforeach;
+?>
+    <?php foreach ($courses as $course) echo "pathsToIcons[", $course->ID, "] = []; "; ?>
+    $.each(iconsToPaths, function(k, a) {
+        $.each(a, function(i, v) {
+            pathsToIcons[v].push(k);
+        });
+        if (a.length == 0) {
+            iconsToPaths[k] = Object.keys(pathsToIcons);
+        }
+    });
+    $.each(pathsToIcons, function(k, v) {
+        if (v.length == 1) {
+            oneToOnePathsToIcons[k] = v[0];
+        }
+        if (v.length == 0) {
+            pathsToIcons[k] = Object.keys(iconsToPaths);
+        }
+    });
+    console.log(iconsToPaths);
+    console.log(pathsToIcons);
+    console.log(oneToOnePathsToIcons);
+
     $.when.apply($, getJsons).done(function() {
         $('.icons-control a').on('click', function(e) {
             e.preventDefault();
@@ -277,14 +319,5 @@ wp_footer();
     L.control.layers(baseMaps).addTo(map);
 })(jQuery)
     </script>
-
-    <!-- pre>
-<?php
-foreach ($courses as $course):
-    print_r($course);
-    echo "\n";
-?>
-<?php endforeach; ?>
-    </pre -->
   </body>
 </html>

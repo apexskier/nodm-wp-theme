@@ -48,6 +48,7 @@ function course_icons_save_details() {
     update_post_meta($post->ID, "course_icons_icon", $_POST["course_icons_icon"]);
     update_post_meta($post->ID, "course_icons_icon_id", $_POST["course_icons_icon_id"]);
     update_post_meta($post->ID, "course_icons_icon_path", $_POST["course_icons_icon_path"]);
+    update_post_meta($post->ID, "course_icons_course_link", $_POST["course_icons_course_link"]);
 }
 add_action('save_post', 'course_icons_save_details');
 
@@ -60,6 +61,7 @@ function course_icons_meta() {
     $course_icons_icon = $custom["course_icons_icon"][0];
     $course_icons_icon_path = $custom["course_icons_icon_path"][0];
     $course_icons_icon_id = $custom["course_icons_icon_id"][0];
+    $course_icons_course_link = unserialize($custom["course_icons_course_link"][0]);
     ?>
     <p>
         <input id="upload_geojson_button" type="button" value="GeoJSON File" class="button" data-uploader_title="Select a GeoJSON File" data-uploader_button_text="Select">
@@ -71,6 +73,30 @@ function course_icons_meta() {
         <input id="upload_icon_button" type="button" value="Icon File" class="button" data-uploader_title="Select an Icon File" data-uploader_button_text="Select">
         <input id="course_icons_icon_path" type="text" name="course_icons_icon_path" value="<?php echo $course_icons_icon_path; ?>">
         <input id="course_icons_icon_id" type="hidden" name="course_icons_icon_id" value="<?php echo $course_icons_icon_id; ?>">
+    </p>
+    <p>
+        <label for="course_icons_course_link">Link to paths</label><br>
+        <select id="course_icons_course_link" name="course_icons_course_link[]" multiple="multiple">
+<?php
+function get_order($a, $b) {
+    $a_order = get_post_meta($a->ID, 'course_order', true);
+    $b_order = get_post_meta($b->ID, 'course_order', true);
+    if ($a_order == $b_order) return 0;
+    return ($a_order < $b_order) ? -1 : 1;
+}
+
+$courses = get_posts(array(
+    'post_type' => 'course'
+));
+usort($courses, 'get_order');
+
+foreach ($courses as $course):
+?>
+            <option value="<?php echo $course->ID; ?>"<?php echo in_array($course->ID, $course_icons_course_link) ? ' selected="selected"' : ''; ?>>
+                <?php echo $course->post_title; ?>
+            </option>
+<?php endforeach; ?>
+        </select>
     </p>
     <script>
     (function () {

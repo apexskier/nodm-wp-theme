@@ -84,8 +84,8 @@ function widgets_init() {
   register_sidebar([
     'name'          => __('Home Content', 'sage'),
     'id'            => 'home-content',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
+    'before_widget' => '<section class="widget row %1$s %2$s"><div class="col-sm-12">',
+    'after_widget'  => '</div></section>',
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
