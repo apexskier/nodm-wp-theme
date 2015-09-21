@@ -43,11 +43,11 @@ if ($lead_text != ''):
     <?php endif; ?>
     <div class="wrap container" role="document">
       <div class="content row">
-        <main class="main" role="main">
+        <main class="main col-sm-9 col-lg-8" role="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
         <?php if (Config\display_sidebar()) : ?>
-          <aside class="sidebar" role="complementary">
+          <aside class="sidebar col-sm-3 col-lg-3 col-lg-push-1" role="complementary">
             <?php include Wrapper\sidebar_path(); ?>
           </aside><!-- /.sidebar -->
         <?php endif; ?>

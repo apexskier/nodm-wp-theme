@@ -39,7 +39,9 @@ class Anchor_Links extends WP_Widget {
 
         if ($content != '') {
             $dom = new DOMDocument();
+            libxml_use_internal_errors(true);
             $dom->loadHTML('<?xml encoding="utf-8" ?>' . $content);
+            libxml_use_internal_errors(false);
             $elements = $dom->getElementsByTagName('h3');
             $len = $elements->length;
             if ($len > 0) {

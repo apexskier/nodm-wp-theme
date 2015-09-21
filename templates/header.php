@@ -34,7 +34,7 @@
         </div>
     </div>
 </header>
-<nav role="navigation" class="closed <?php if ($post->post_parent || count(get_pages('child_of='.$post->ID)) > 0) { echo " has-parent"; }?>">
+<nav role="navigation" class="closed<?php if ($post->post_parent || count(get_pages('child_of='.$post->ID)) > 0) echo " has-parent"; ?>">
     <div class="container">
     <?php if (has_nav_menu('primary_navigation')) :
         wp_nav_menu([
