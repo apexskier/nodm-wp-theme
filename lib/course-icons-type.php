@@ -62,6 +62,7 @@ function course_icons_meta() {
     $course_icons_icon_path = $custom["course_icons_icon_path"][0];
     $course_icons_icon_id = $custom["course_icons_icon_id"][0];
     $course_icons_course_link = unserialize($custom["course_icons_course_link"][0]);
+    if (!$course_icons_course_link) $course_icons_course_link = array();
     ?>
     <p>
         <input id="upload_geojson_button" type="button" value="GeoJSON File" class="button" data-uploader_title="Select a GeoJSON File" data-uploader_button_text="Select">
