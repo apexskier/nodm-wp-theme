@@ -1,7 +1,7 @@
 <!-- display-case is above this ^^^ -->
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-sm-6">
         <h3>Countdown</h3>
         <p class="countdown">
             <span class="day"></span> <span class="day-text"></span>
@@ -112,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-sm-6">
         <?php while (have_posts()) : the_post(); ?>
           <?php get_template_part('templates/content', 'page'); ?>
         <?php endwhile; ?>
