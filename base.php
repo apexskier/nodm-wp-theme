@@ -43,7 +43,7 @@ if ($lead_text != ''):
     <?php endif; ?>
     <div class="wrap container" role="document">
       <div class="content row">
-        <main class="main col-sm-9 col-lg-8" role="main">
+        <main class="main<?php if (Config\display_sidebar()) echo " col-sm-9 col-lg-8"; ?>" role="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
         <?php if (Config\display_sidebar()) : ?>
