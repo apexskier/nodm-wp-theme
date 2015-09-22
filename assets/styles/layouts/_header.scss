@@ -137,7 +137,7 @@ nav {
                 font-size: 1.4rem;
             }
 
-            &.current_page_item, &.current-page-ancestor,
+            &.current_page_item, &.current-page-ancestor, &.current-menu-ancestor,
             &:hover, &:focus {
                 background-color: $hover-color;
             }
@@ -211,7 +211,7 @@ nav {
                     }
                 }
 
-                &.current_page_item, &.current-page-ancestor {
+                &.current_page_item, &.current-page-ancestor, &.current-menu-ancestor {
                     a:hover,
                     a:focus,
                     .sub-menu {
@@ -401,14 +401,17 @@ nav {
                 }
 
                 &.current-page-ancestor .sub-menu,
+                &.current-menu-ancestor .sub-menu,
                 &.current_page_item,
-                &.current-page-ancestor {
+                &.current-page-ancestor,
+                &.current-menu-ancestor {
                     display: block;
                 }
             }
         }
 
-        &.closed .current-page-ancestor > a {
+        &.closed .current-page-ancestor > a,
+        &.closed .current-menu-ancestor > a {
             display: none;
         }
 
