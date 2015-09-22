@@ -28,7 +28,6 @@
             <div class="col-lg-6 col-md-5 col-sm-6 header-right">
                 <h3><?php echo get_theme_mod('event_date'); ?></h3>
                 <p><small><?php echo get_theme_mod('event_details'); ?></small></p>
-                <button class="btn btn-lg btn-primary">Register</button>
                 <?php dynamic_sidebar('header-right'); ?>
             </div>
         </div>
