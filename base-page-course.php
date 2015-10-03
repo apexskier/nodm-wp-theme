@@ -276,9 +276,9 @@ foreach ($icons as $icon): ?>
         '<?php echo get_post_meta($icon->ID, 'course_icons_icon_path', true); ?>'
     ));
     iconsToPaths[<?php echo $icon->ID; ?>] = [<?php
-    foreach (get_post_meta($icon->ID, 'course_icons_course_link', true) as $pathId) {
-        echo $pathId, ', ';
-    } ?>];
+    $links = get_post_meta($icon->ID, 'course_icons_course_link', true) as $pathId;
+    if $links foreach ($links) echo $pathId, ', ';
+    ?>];
 <?php
 endforeach;
 ?>
