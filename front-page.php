@@ -1,6 +1,5 @@
 <!-- display-case is above this ^^^ -->
 
-<div class="row">
     <div class="col-sm-6">
         <h3>Countdown</h3>
         <p class="countdown">
@@ -117,4 +116,3 @@
           <?php get_template_part('templates/content', 'page'); ?>
         <?php endwhile; ?>
     </div>
-</div>
