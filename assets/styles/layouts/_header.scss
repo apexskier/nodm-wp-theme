@@ -165,7 +165,7 @@ nav {
                 transform-style: flat;
                 backface-visibility: visible;
 
-                &#menu-item-15 {
+                &:first-child {
                     display: none;
                 }
 
@@ -364,9 +364,6 @@ nav {
                 margin-right: -15px;
                 padding-left: 15px;
                 padding-right: 15px;
-
-                &#menu-item-15 {
-                }
 
                 a {
                     padding-top: 6px;
