@@ -151,6 +151,10 @@ nav {
         text-align: center;
         z-index: 10;
 
+        #menu-main-navigation > .menu-item:first-child {
+          display: none;
+        }
+
         .menu, .sub-menu {
             display: table;
             transition-delay: $delay;
@@ -164,10 +168,6 @@ nav {
                 transition-delay: $delay;
                 transform-style: flat;
                 backface-visibility: visible;
-
-                // &:first-child {
-                //     display: none;
-                // }
 
                 a {
                     vertical-align: middle;
